@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DBConnection.DatabaseConnection;
 import Model.Hospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +27,10 @@ public class HospitalDAO {
     private final String insertHospital = "INSERT INTO Hospital VALUES(?, ?, ?, ?)";
     private final String updateHospital = "UPDATE Hospital SET Name = ?, Hospital_Address = ?, Website = ? WHERE ID = ?";
     private final String deleteHospital = "DELETE Hospital WHERE ID = ?";
+
+    public HospitalDAO() throws SQLException, ClassNotFoundException {
+        conn = DatabaseConnection.getConnection();
+    }
     
     public List<Hospital> getAllHospital() throws SQLException {
         PreparedStatement ps = conn.prepareCall(getAllHospital);
@@ -60,12 +67,16 @@ public class HospitalDAO {
     }
     
     public void insertHospital(Hospital hospital) throws SQLException {
-        PreparedStatement ps = conn.prepareCall(insertHospital);
+        PreparedStatement ps = conn.prepareStatement(insertHospital, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setInt(1, hospital.getId());
         ps.setString(2, hospital.getName());
         ps.setString(3, hospital.getHospitalAddress());
         ps.setString(4, hospital.getWebsite());
-        ResultSet rs = ps.executeQuery();
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            hospital.setId(rs.getInt(1));
+        }
     }
     
     public void updateHospital(Hospital hospital) throws SQLException {
@@ -77,4 +88,16 @@ public class HospitalDAO {
         ps.execute();
     }
     
+    public static void main(String args[]) {
+        try {
+            HospitalDAO dao = new HospitalDAO();
+            Hospital hos = new Hospital(1, "bv", "123", "www.net");
+            dao.insertHospital(hos);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(HospitalDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HospitalDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

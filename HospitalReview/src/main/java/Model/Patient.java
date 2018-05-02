@@ -17,20 +17,20 @@ public class Patient {
     private String gender;
     private String email;
     private String password;
-    private String Address;
-    private String Languages;
+    private String address;
+    private String languages;
 
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String gender, String email, String password, String Address, String Languages) {
+    public Patient(String firstName, String lastName, String gender, String email, String password, String address, String languages) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
         this.password = password;
-        this.Address = Address;
-        this.Languages = Languages;
+        this.address = address;
+        this.languages = languages;
     }
 
     public int getId() {
@@ -82,19 +82,19 @@ public class Patient {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getLanguages() {
-        return Languages;
+        return languages;
     }
 
-    public void setLanguages(String Languages) {
-        this.Languages = Languages;
+    public void setLanguages(String languages) {
+        this.languages = languages;
     }
 
 }

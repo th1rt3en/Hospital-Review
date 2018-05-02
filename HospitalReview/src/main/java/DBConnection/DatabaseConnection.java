@@ -13,8 +13,8 @@ import java.sql.*;
 public class DatabaseConnection {
     
     private static Connection connection;
-    private static String url = "jdbc:mysql://localhost:3306/hospital-review";
-    private static String username = "root";
+    private static String url = "jdbc:mysql://localhost:3306/hospitalreview";
+    private static String username = "hai07890";
     private static String password = "1107";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {

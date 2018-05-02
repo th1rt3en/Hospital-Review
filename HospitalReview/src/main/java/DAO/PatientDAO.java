@@ -61,19 +61,19 @@ public class PatientDAO {
     }
 
     public int addPatient(Patient p) throws SQLException, ClassNotFoundException {
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO patient "
-                + "(First_Name, Last_Name, Gender, Email, Password, Address, Languages) VALUES (?,?,?,?,?,?,?)");
-        ps.setString(1, p.getFirstName());
-        ps.setString(2, p.getLastName());
-        ps.setString(3, p.getGender());
-        ps.setString(4, p.getEmail());
-        ps.setString(5, p.getPassword());
-        ps.setString(6, p.getAddress());
-        ps.setString(7, p.getLanguages());
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO patient VALUES (?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, p.getId());
+        ps.setString(2, p.getFirstName());
+        ps.setString(3, p.getLastName());
+        ps.setString(4, p.getAddress());
+        ps.setString(5, p.getGender());
+        ps.setString(6, p.getLanguages());
         ps.executeUpdate();
-
-        Patient patient = getPatientByEmail(p.getEmail());
-        return patient.getId();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return -1;
     }
     
     public void updatePassword(Patient p, String password) throws SQLException, ClassNotFoundException {

@@ -22,9 +22,13 @@ public class Register extends Mockito{
     public void testServlet() throws Exception {
         HttpServletRequest request = mock(HttpServletRequest.class);       
         HttpServletResponse response = mock(HttpServletResponse.class);
-
+        
         when(request.getParameter("type")).thenReturn("1");
-        when(request.getParameter("password")).thenReturn("secret");
+        when(request.getParameter("Email")).thenReturn("hai06780@gmail.com");
+        when(request.getParameter("Password")).thenReturn("123456");
+        when(request.getParameter("Email")).thenReturn("hai06780@gmail.com");
+        when(request.getParameter("Email")).thenReturn("hai06780@gmail.com");
+        
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);

@@ -13,7 +13,7 @@ public class User {
     private int id = -1;
     private String email;
     private String password;
-    private Boolean isActivated;
+    private Boolean isActivated = false;
     private int type;
 
     public User() {
@@ -22,7 +22,7 @@ public class User {
     public User(String email, String password, Boolean isActivated, int type) {
         this.email = email;
         this.password = password;
-        this.isActivated = isActivated;
+        this.isActivated = false;
         this.type = type;
     }
     

@@ -18,7 +18,7 @@ import java.util.List;
 public class DoctorDAO {
     private Connection conn;
     private final String GetAllDoctors = "SELECT * FROM Doctor";
-    private final String InsertDoctor = "INSERT INTO Doctor VALUES (?, ?, ?, ?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();";
+    private final String InsertDoctor = "INSERT INTO Doctor VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?);";
     private final String UpdateDoctor = "UPDATE Doctor SET First_Name = ?, Last_Name = ?, Gender = ?, Degree = ?, Accepted_Insurance = ?, Office_Hours = ?, Languages = ?, Hospital_ID = ? WHERE ID = ?";
     private final String SearchDoctorByProperties = "SELECT * FROM Doctor Where 1 = 1";
     
@@ -47,7 +47,7 @@ public class DoctorDAO {
     }
     
     public void insertDoctor(Doctor doctor) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(InsertDoctor);
+        PreparedStatement ps = conn.prepareStatement(InsertDoctor, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, doctor.getFirstName());
         ps.setString(2, doctor.getLastName());
         ps.setString(3, doctor.getGender());
@@ -56,9 +56,10 @@ public class DoctorDAO {
         ps.setString(6, doctor.getOfficeHours());
         ps.setString(7, doctor.getLanguages());
         ps.setInt(8, doctor.getHospitalId());
-        ResultSet rs = ps.executeQuery();
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
         if (rs.next()) {
-            doctor.setId(rs.getInt("ID"));
+            doctor.setId(rs.getInt(1));
         }
     }
     
@@ -115,5 +116,16 @@ public class DoctorDAO {
             doctorList.add(temp);
         }
         return doctorList;
+    }
+    
+    public static void main(String[] args) {
+        try {
+            DoctorDAO dao = new DoctorDAO();
+            Doctor doc = new Doctor("hai", "pham", "male", "bachelor", true, "9-5", "VN-EN", 1);
+            dao.insertDoctor(doc);
+        } catch (Exception ex) {
+            
+            System.out.print(ex);
+        }
     }
 }

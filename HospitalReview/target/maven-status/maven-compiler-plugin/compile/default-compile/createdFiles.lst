@@ -11,5 +11,4 @@ DAO\DoctorDAO.class
 DAO\HospitalDAO.class
 Model\Patient.class
 DAO\UserDAO.class
-.netbeans_automatic_build
 Tools\Email.class

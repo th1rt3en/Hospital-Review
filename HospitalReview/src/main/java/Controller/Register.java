@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -47,9 +48,14 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int type = Integer.parseInt(request.getParameter("Type"));
+            int type = Integer.parseInt(request.getParameter("type"));
             Map map = request.getParameterMap();
-            
+            for (Object key : map.keySet()) {
+                String keyStr = (String) key;
+                String[] value = (String[]) map.get(keyStr);
+                System.out.println("Key" + (String) key + "   :   " + Arrays.toString(value));
+            }
+
             if (type == 1) {
                 User user = new User();
                 BeanUtils.populate(user, map);
@@ -60,8 +66,7 @@ public class Register extends HttpServlet {
                 uDao.insertUser(user);
                 patient.setId(user.getId());
                 pDao.addPatient(patient);
-            }
-            else if (type == 2) {
+            } else if (type == 2) {
                 User user = new User();
                 BeanUtils.populate(user, map);
                 Hospital hospital = new Hospital();
@@ -71,8 +76,7 @@ public class Register extends HttpServlet {
                 uDao.insertUser(user);
                 hospital.setId(user.getId());
                 hDao.insertHospital(hospital);
-            }
-            else if (type == 3) {
+            } else if (type == 3) {
                 UserDAO dao = new UserDAO();
                 User curUser = (User) request.getSession().getAttribute("User");
                 if (dao.authorization(curUser) == 3) {
@@ -83,7 +87,7 @@ public class Register extends HttpServlet {
                     uDao.insertUser(user);
                 }
             }
-        }   catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvocationTargetException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
