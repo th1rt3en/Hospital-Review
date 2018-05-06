@@ -7,63 +7,79 @@ package DAO;
 
 import java.sql.*;
 import DBConnection.DatabaseConnection;
-import Model.Doctor;
+import Model.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Negarr
  */
 public class DoctorDAO {
-    private Connection conn;
-    private final String GetAllDoctors = "SELECT * FROM Doctor";
-    private final String InsertDoctor = "INSERT INTO Doctor VALUES (?, ?, ?, ?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();";
-    private final String UpdateDoctor = "UPDATE Doctor SET First_Name = ?, Last_Name = ?, Gender = ?, Degree = ?, Accepted_Insurance = ?, Office_Hours = ?, Languages = ?, Hospital_ID = ? WHERE ID = ?";
-    private final String SearchDoctorByProperties = "SELECT * FROM Doctor Where 1 = 1";
-    
+
+    private final Connection conn;
+    private static final String INSERT_STATEMENT = "INSERT INTO doctor "
+            + "(First_Name, Last_Name, Gender, Degree, Accepted_Insurance, Office_Hours, Languages, Hospital_ID) "
+            + "VALUES (?,?,?,?,?,?,?,?)";    
+    private static final String SELECT_STATEMENT = "SELECT * FROM doctor";
+    private static final String DELETE_STATEMENT = "DELETE FROM doctor WHERE ID = ?";
+    private static final String UPDATE_STATEMENT = "UPDATE doctor "
+            + "SET First_Name = ?, Last_Name = ?, Gender = ?, Degree = ?, "
+            + "Accepted_Insurance = ?, Office_Hours = ?, Languages = ?, Hospital_ID = ?"
+            + "WHERE ID = ?"; 
+    private static final String SEARCH_STATEMENT = "SELECT * FROM doctor "
+            + "WHERE First_Name LIKE ?, Last_Name LIKE ?, Gender LIKE ?, Degree LIKE ?";
+    private static final String LAST_INSERT_STATEMENT = "SELECT LAST_INSERT_ID()";
+
     public DoctorDAO() throws SQLException, ClassNotFoundException {
         conn = DatabaseConnection.getConnection();
     }
-    
-    public List<Doctor> getAllDoctors() throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(GetAllDoctors);
+
+    public ArrayList<Doctor> searchDoctors(Doctor doctor) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(SEARCH_STATEMENT);
+        ps.setString(1, doctor.getFirstName() == null ? "%%" : "%" + doctor.getFirstName() + "%");
+        ps.setString(2, doctor.getLastName() == null ? "%%" : "%" + doctor.getLastName() + "%");
+        ps.setString(3, doctor.getGender() == null ? "%%" : "%" + doctor.getGender() + "%");
+        ps.setString(4, doctor.getDegree() == null ? "%%" : "%" + doctor.getDegree() + "%");
         ResultSet rs = ps.executeQuery();
-        List<Doctor> doctorList = new ArrayList<>();
+        ArrayList<Doctor> doctors = new ArrayList<>();
         while (rs.next()) {
-            Doctor temp = new Doctor();
-            temp.setId(rs.getInt("ID"));
-            temp.setFirstName(rs.getString("First_Name"));
-            temp.setLastName(rs.getString("Last_Name"));
-            temp.setGender(rs.getString("Gender"));
-            temp.setDegree(rs.getString("Degree"));
-            temp.setAcceptedInsurance(rs.getBoolean("Accepted_Insurance"));
-            temp.setOfficeHours(rs.getString("Office_Hours"));
-            temp.setLanguages(rs.getString("Languages"));
-            temp.setHospitalId(rs.getInt("Hospital_ID"));
-            doctorList.add(temp);
+            Doctor d = new Doctor();
+            d.setId(rs.getInt(1));
+            d.setFirstName(rs.getString(2));
+            d.setLastName(rs.getString(3));
+            d.setGender(rs.getString(4));
+            d.setDegree(rs.getString(5));
+            d.setAcceptedInsurance(rs.getBoolean(6));
+            d.setOfficeHours(rs.getString(7));
+            d.setLanguages(rs.getString(8));
+            d.setHospitalId(rs.getInt(9));
+            doctors.add(d);
         }
-        return doctorList;
+        return doctors;
     }
     
-    public void insertDoctor(Doctor doctor) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(InsertDoctor);
-        ps.setString(1, doctor.getFirstName());
-        ps.setString(2, doctor.getLastName());
-        ps.setString(3, doctor.getGender());
-        ps.setString(4, doctor.getDegree());
-        ps.setBoolean(5, doctor.isAcceptedInsurance());
-        ps.setString(6, doctor.getOfficeHours());
-        ps.setString(7, doctor.getLanguages());
-        ps.setInt(8, doctor.getHospitalId());
+    public ArrayList<Doctor> getAllDoctors() throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(SELECT_STATEMENT);
         ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            doctor.setId(rs.getInt("ID"));
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        while (rs.next()) {
+            Doctor doctor = new Doctor();
+            doctor.setId(rs.getInt(1));
+            doctor.setFirstName(rs.getString(2));
+            doctor.setLastName(rs.getString(3));
+            doctor.setGender(rs.getString(4));
+            doctor.setDegree(rs.getString(5));
+            doctor.setAcceptedInsurance(rs.getBoolean(6));
+            doctor.setOfficeHours(rs.getString(7));
+            doctor.setLanguages(rs.getString(8));
+            doctor.setHospitalId(rs.getInt(9));
+            doctors.add(doctor);
         }
+        return doctors;
     }
-    
-    public void updateDoctor(Doctor doctor) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(UpdateDoctor);
+
+    public void updateDoctor(Doctor doctor) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(UPDATE_STATEMENT);
         ps.setString(1, doctor.getFirstName());
         ps.setString(2, doctor.getLastName());
         ps.setString(3, doctor.getGender());
@@ -73,47 +89,30 @@ public class DoctorDAO {
         ps.setString(7, doctor.getLanguages());
         ps.setInt(8, doctor.getHospitalId());
         ps.setInt(9, doctor.getId());
-        ps.executeQuery();
+        ps.executeUpdate();
     }
     
-    public List<Doctor> searchDoctorByProperties(Doctor doctor) throws SQLException {
-        String query = SearchDoctorByProperties;
-        if (doctor.getFirstName() != null) {
-            query += " First_Name = " + doctor.getFirstName();
-        }
-        if (doctor.getLastName() != null) {
-            query += " Last_Name = " + doctor.getLastName();
-        }
-        if (doctor.getGender() != null) {
-            query += " Gender = " + doctor.getGender();
-        }
-        if (doctor.getDegree() != null) {
-            query += " Degree = " + doctor.getDegree();
-        }
-        if (doctor.isAcceptedInsurance() != null) {
-            query += " Accepted_Insurance = " + doctor.isAcceptedInsurance();
-        }
-        //if (doctor.getOfficeHours())
-        //if (doctor.getLanguages() != null) {
-        if (doctor.getHospitalId() != -1) {
-            query += " Hospital_ID = " + doctor.getHospitalId();
-        }
-        PreparedStatement ps = conn.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        List<Doctor> doctorList = new ArrayList<>();
-        while (rs.next()) {
-             Doctor temp = new Doctor();
-            temp.setId(rs.getInt("ID"));
-            temp.setFirstName(rs.getString("First_Name"));
-            temp.setLastName(rs.getString("Last_Name"));
-            temp.setGender(rs.getString("Gender"));
-            temp.setDegree(rs.getString("Degree"));
-            temp.setAcceptedInsurance(rs.getBoolean("Accepted_Insurance"));
-            temp.setOfficeHours(rs.getString("Office_Hours"));
-            temp.setLanguages(rs.getString("Languages"));
-            temp.setHospitalId(rs.getInt("Hospital_ID"));
-            doctorList.add(temp);
-        }
-        return doctorList;
+    public void deleteDoctor(Doctor doctor) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(DELETE_STATEMENT);
+        ps.setInt(1, doctor.getId());
+        ps.executeUpdate();
     }
+    
+    public int insertDoctor(Doctor doctor) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(INSERT_STATEMENT);
+        ps.setString(1, doctor.getFirstName());
+        ps.setString(2, doctor.getLastName());
+        ps.setString(3, doctor.getGender());
+        ps.setString(4, doctor.getDegree());
+        ps.setBoolean(5, doctor.isAcceptedInsurance());
+        ps.setString(6, doctor.getOfficeHours());
+        ps.setString(7, doctor.getLanguages());
+        ps.setInt(8, doctor.getHospitalId());
+        ps.executeUpdate();
+        ps = conn.prepareStatement(LAST_INSERT_STATEMENT);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        return rs.getInt(1);
+    }
+    
 }

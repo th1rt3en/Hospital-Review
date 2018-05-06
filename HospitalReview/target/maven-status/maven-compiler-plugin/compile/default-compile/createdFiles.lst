@@ -4,4 +4,3 @@ Model\Doctor.class
 DAO\DoctorDAO.class
 Controller\DoctorServlet.class
 Model\Patient.class
-com\google\code\samples\oauth2\OAuth2SaslClient.class

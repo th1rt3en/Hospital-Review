@@ -18,6 +18,6 @@ public class SHAHash {
     }
     
     public static void main(String args[]) {
-        System.out.print(SHAHash.hash("123456"));
+        System.out.print(SHAHash.hash("mo!on@light0102"));
     }
 }
