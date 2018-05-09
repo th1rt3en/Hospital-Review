@@ -9,7 +9,7 @@ import Model.*;
 import java.sql.*;
 import DBConnection.DatabaseConnection;
 import java.util.ArrayList;
-import java.util.List;
+import Tools.Cryptography;
 
 /**
  *
@@ -17,48 +17,42 @@ import java.util.List;
  */
 public class PatientDAO {
 
-    private Connection conn;
-
+    private final Connection conn;
+    private static final String INSERT_STATEMENT = "INSERT INTO patient "
+            + "(ID, First_Name, Last_Name, Address, Gender, Languages) VALUES (?,?,?,?,?,?)";
+    private static final String UPDATE_STATEMENT = "UPDATE patient "
+            + "SET First_Name = ?, Last_Name = ?, Address = ?, Gender = ?, Languages = ? "
+            + "WHERE ID = ?";
+    private static final String DELETE_STATEMENT = "DELETE FROM patient WHERE ID = ?";
+    private static final String SELECT_STATEMENT = "SELECT u.*, p.First_Name, "
+            + "p.Last_Name, p.Address, p.Gender, p.Languages "
+            + "FROM patient AS p JOIN `user` AS u";
+    
     public PatientDAO() throws SQLException, ClassNotFoundException {
         conn = DatabaseConnection.getConnection();
     }
 
-    public Patient getPatientByEmail(String email) throws SQLException, ClassNotFoundException {
-        Patient p = new Patient();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM patient WHERE Email = ?");
-        ps.setString(1, email);
+    public ArrayList<Patient> getAllPatients() throws SQLException, ClassNotFoundException {
+        ArrayList<Patient> patients = new ArrayList<>();
+        PreparedStatement ps = conn.prepareStatement(SELECT_STATEMENT);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            p.setAddress(rs.getString("Address"));
-            p.setEmail(rs.getString("Email"));
-            p.setFirstName(rs.getString("First_Name"));
-            p.setGender(rs.getString("Gender"));
-            p.setId(rs.getInt("ID"));
-            p.setLanguages(rs.getString("Languages"));
-            p.setLastName(rs.getString("Last_Name"));
-            p.setPassword(rs.getString("Password"));
-        }
-        return p;
-    }
-
-    public List<Patient> getAllPatients() throws SQLException, ClassNotFoundException {
-        List<Patient> patients = new ArrayList<Patient>();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM patient");
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            Patient p = new Patient();
-            p.setAddress(rs.getString("Address"));
-            p.setEmail(rs.getString("Email"));
-            p.setFirstName(rs.getString("First_Name"));
-            p.setGender(rs.getString("Gender"));
-            p.setId(rs.getInt("ID"));
-            p.setLanguages(rs.getString("Languages"));
-            p.setLastName(rs.getString("Last_Name"));
-            p.setPassword(rs.getString("Password"));
-            patients.add(p);
+            Patient patient = new Patient();
+            patient.setId(rs.getInt(1));
+            patient.setEmail(rs.getString(2));
+            patient.setPassword(Cryptography.decrypt(rs.getString(3)));
+            patient.setActivated(rs.getBoolean(4));
+            patient.setType(rs.getString(5));
+            patient.setFirstName(rs.getString(6));
+            patient.setLastName(rs.getString(7));
+            patient.setAddress(rs.getString(8));
+            patient.setGender(rs.getString(9));
+            patient.setLanguages(rs.getString(10));
+            patients.add(patient);
         }
         return patients;
     }
+<<<<<<< HEAD
 
     public int addPatient(Patient p) throws SQLException, ClassNotFoundException {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO patient VALUES (?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
@@ -74,13 +68,35 @@ public class PatientDAO {
             return rs.getInt(1);
         }
         return -1;
+=======
+    
+    public void updatePatient(Patient patient) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(UPDATE_STATEMENT);
+        ps.setString(1, patient.getFirstName());
+        ps.setString(2, patient.getLastName());
+        ps.setString(3, patient.getAddress());
+        ps.setString(4, patient.getGender());
+        ps.setString(5, patient.getLanguages());
+        ps.setInt(6, patient.getId());
+        ps.executeUpdate();
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
     }
     
-    public void updatePassword(Patient p, String password) throws SQLException, ClassNotFoundException {
-        PreparedStatement ps = conn.prepareStatement("UPDATE patient SET Password = ? WHERE ID = ?");
-        ps.setString(1, password);
-        ps.setInt(2, p.getId());
+    public void deletePatient(Patient patient) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(DELETE_STATEMENT);
+        ps.setInt(1, patient.getId());
         ps.executeUpdate();
     }
+    
+    public void insertPatient(Patient patient) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = conn.prepareStatement(INSERT_STATEMENT);
+        ps.setInt(1, patient.getId());
+        ps.setString(2, patient.getFirstName());
+        ps.setString(3, patient.getLastName());
+        ps.setString(4, patient.getAddress());
+        ps.setString(5, patient.getGender());
+        ps.setString(6, patient.getLanguages());
+        ps.executeUpdate();
+    }    
     
 }

@@ -7,6 +7,7 @@ package Model;
 
 /**
  *
+<<<<<<< HEAD
  * @author hai06
  */
 public class Hospital {
@@ -39,6 +40,22 @@ public class Hospital {
         this.id = id;
     }
 
+=======
+ * @author Negarr
+ */
+public class Hospital extends User {
+    private String name;
+    private String address;
+    private String website = "N/A";
+
+    public Hospital() {
+    }
+
+    public Hospital(User user) {
+        super(user.getId(), user.getEmail(), user.getPassword(), user.getType());
+    }
+    
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
     public String getName() {
         return name;
     }
@@ -47,12 +64,21 @@ public class Hospital {
         this.name = name;
     }
 
+<<<<<<< HEAD
     public String getHospitalAddress() {
         return hospitalAddress;
     }
 
     public void setHospitalAddress(String hospitalAddress) {
         this.hospitalAddress = hospitalAddress;
+=======
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
     }
 
     public String getWebsite() {
@@ -63,7 +89,10 @@ public class Hospital {
         this.website = website;
     }
     
+<<<<<<< HEAD
     
     
     
+=======
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
 }

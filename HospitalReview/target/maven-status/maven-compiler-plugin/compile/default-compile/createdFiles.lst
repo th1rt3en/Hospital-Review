@@ -10,5 +10,8 @@ Model\Doctor.class
 DAO\DoctorDAO.class
 DAO\HospitalDAO.class
 Model\Patient.class
+<<<<<<< HEAD
 DAO\UserDAO.class
 Tools\Email.class
+=======
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c

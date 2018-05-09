@@ -9,12 +9,12 @@ package Model;
  *
  * @author Negarr
  */
-public class Patient {
-
-    private int id;
+public class Patient extends User{
     private String firstName;
     private String lastName;
+    private String address;
     private String gender;
+<<<<<<< HEAD
     private String email;
     private String password;
     private String address;
@@ -40,6 +40,9 @@ public class Patient {
     public void setId(int id) {
         this.id = id;
     }
+=======
+    private String languages;
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
 
     public String getFirstName() {
         return firstName;
@@ -57,6 +60,14 @@ public class Patient {
         this.lastName = lastName;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -65,22 +76,7 @@ public class Patient {
         this.gender = gender;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+<<<<<<< HEAD
     public String getAddress() {
         return address;
     }
@@ -95,6 +91,20 @@ public class Patient {
 
     public void setLanguages(String languages) {
         this.languages = languages;
+=======
+    public String getLanguages() {
+        return languages;
     }
 
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+    public Patient() {
+    }
+    
+    public Patient(User user) {
+        super(user.getId(), user.getEmail(), user.getPassword(), user.getType());
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
+    }
 }

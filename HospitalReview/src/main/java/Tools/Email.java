@@ -50,6 +50,6 @@ public class Email {
     
     public static void main(String args[]) {
         Email e = new Email();
-        e.sendMail("hai06780@gmail.com", "testprojecthai07890 Email", "HospitalReview");
+        e.sendMail("gd.ikaros@gmail.com", "testprojecthai07890 Email", "HospitalReview");
     }
 }

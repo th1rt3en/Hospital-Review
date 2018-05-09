@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\HospitalDAO.java
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DBConnection\DatabaseConnection.java
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Hospital.java
@@ -11,3 +12,13 @@ F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hosp
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\Register.java
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\UserDAO.java
 F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\PatientDAO.java
+=======
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\DBConnection\DatabaseConnection.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\Controller\DoctorServlet.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\DAO\PatientDAO.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\DAO\DoctorDAO.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\Tools\SHAHash.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\Tools\Email.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\Model\Patient.java
+C:\Users\Negarr\Desktop\Hospital-Review\HospitalReview\src\main\java\Model\Doctor.java
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c

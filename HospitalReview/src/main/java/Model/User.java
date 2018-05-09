@@ -7,6 +7,7 @@ package Model;
 
 /**
  *
+<<<<<<< HEAD
  * @author hai06
  */
 public class User {
@@ -34,6 +35,24 @@ public class User {
         this.type = type;
     }
     
+=======
+ * @author Negarr
+ */
+public class User {
+    private int id;
+    private String email;
+    private String password;
+    private boolean activated = false;
+    private String type;
+
+    public User(int id, String email, String password, String type) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.type = type;
+    }
+
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
     public int getId() {
         return id;
     }
@@ -58,6 +77,7 @@ public class User {
         this.password = password;
     }
 
+<<<<<<< HEAD
     public Boolean isActivated() {
         return isActivated;
     }
@@ -75,4 +95,24 @@ public class User {
     }
     
     
+=======
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public User() {
+    }
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
 }

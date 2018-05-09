@@ -38,6 +38,7 @@
             <version>1.6</version>
         </dependency>
         <dependency>
+<<<<<<< HEAD
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
@@ -46,6 +47,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.45</version>
+=======
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>3.1.12</version>
+>>>>>>> 46337c911e803dd0a8cacfb118ee41e9e0b32a9c
         </dependency>
         <dependency>
             <groupId>javax</groupId>
