@@ -169,7 +169,7 @@ CONSTRAINT `FK_358` FOREIGN KEY `fkIdx_358` (`Patient_ID`) REFERENCES `Patient` 
 CREATE TABLE `Hospital_Rate`
 (
  `Patient_ID`  INT NOT NULL ,
- `Rate`        INT NOT NULL DEFAULT Rate >= 1 AND Rate <= 5 ,
+ `Rate`        INT NOT NULL ,
  `Time`        DATETIME NOT NULL ,
  `Hospital_ID` INT NOT NULL ,
 
@@ -252,7 +252,7 @@ CREATE TABLE `Doctor_Rate`
 (
  `Patient_ID` INT NOT NULL ,
  `Doctor_ID`  INT NOT NULL ,
- `Rate`       INT NOT NULL DEFAULT Rate >= 1 AND Rate <= 5 ,
+ `Rate`       INT NOT NULL ,
  `Enable`     TINYINT NOT NULL ,
  `Time`       DATETIME NOT NULL ,
 

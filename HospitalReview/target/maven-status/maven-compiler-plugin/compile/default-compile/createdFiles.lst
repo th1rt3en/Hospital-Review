@@ -1,7 +1,7 @@
+Controller\DoctorServlet.class
+Tools\Email$1.class
 DAO\PatientDAO.class
 DBConnection\DatabaseConnection.class
 Model\Doctor.class
 DAO\DoctorDAO.class
-Controller\DoctorServlet.class
 Model\Patient.class
-com\google\code\samples\oauth2\OAuth2SaslClient.class
