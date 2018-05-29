@@ -10,13 +10,16 @@ package Model;
  * @author PC
  */
 public class hos_bookmark {
+    
     int patientID;
     int hosID;
-public hos_bookmark(int patientID, int hosID){
-this.patientID = patientID;
-this.hosID = hosID;
-}
-public int getpatientID(){
-    return this.patientID;
-}
+    
+    public hos_bookmark(int patientID, int hosID){
+        this.patientID = patientID;
+        this.hosID = hosID;
+    }
+    
+    public int getpatientID(){
+        return this.patientID;
+    }
 }

@@ -1,11 +1,33 @@
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Tools\Email.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\DBConnection\DatabaseConnection.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Model\doc_bookmark.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Model\Doctor.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\DAO\DoctorDAO.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Tools\SHAHash.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Controller\DoctorServlet.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Model\hos_bookmark.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\Model\Patient.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\DAO\BookmarkDAO.java
-C:\Users\PC\Documents\GitHub\Hospital-Review\HospitalReview\src\main\java\DAO\PatientDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\ResetPassword.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\HospitalDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Tools\RandomString.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\BookmarkDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\DoctorDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\HospitalServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Doctor.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Tools\Email.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\CommentServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Tools\Test.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\UserDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Tools\Cryptography.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\AdminServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\SearchServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\SpecialtyDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DBConnection\DatabaseConnection.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Hospital.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\LoginServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\DoctorServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\User.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\PatientServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\hos_bookmark.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Specialty.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\AdminDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Admin.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Tools\SHAHash.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Patient.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\LogoutServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\Comment.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Controller\RegisterServlet.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\CommentDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\DAO\PatientDAO.java
+F:\Study Material\Spring2018-Sem2\Principle of Programming Language\project\Hospital-Review\HospitalReview\src\main\java\Model\doc_bookmark.java

@@ -13,17 +13,20 @@ public class doc_bookmark {
     int patientID;
     int docID;
 
-public doc_bookmark(){
-}
-public int getpatientID(){
-    return this.patientID;
-}
-public void setpatientID(int patientID){
-    this.patientID=patientID;
-}
-public void setdocID(int docID){
-    this.patientID=docID;
-}
+    public doc_bookmark(){
+    }
+    
+    public int getpatientID(){
+        return this.patientID;
+    }
+    
+    public void setpatientID(int patientID){
+        this.patientID=patientID;
+    }
+    
+    public void setdocID(int docID){
+        this.patientID=docID;
+    }
 
 }
 

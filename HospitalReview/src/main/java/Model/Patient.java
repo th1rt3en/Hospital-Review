@@ -9,37 +9,12 @@ package Model;
  *
  * @author Negarr
  */
-public class Patient {
-
-    private int id;
+public class Patient extends User{
     private String firstName;
     private String lastName;
+    private String address;
     private String gender;
-    private String email;
-    private String password;
-    private String Address;
-    private String Languages;
-
-    public Patient() {
-    }
-
-    public Patient(String firstName, String lastName, String gender, String email, String password, String Address, String Languages) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-        this.password = password;
-        this.Address = Address;
-        this.Languages = Languages;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String languages;
 
     public String getFirstName() {
         return firstName;
@@ -57,6 +32,14 @@ public class Patient {
         this.lastName = lastName;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -65,36 +48,22 @@ public class Patient {
         this.gender = gender;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String Address) {
-        this.Address = Address;
-    }
-
     public String getLanguages() {
-        return Languages;
+        return languages;
     }
 
-    public void setLanguages(String Languages) {
-        this.Languages = Languages;
+    public void setLanguages(String languages) {
+        this.languages = languages;
     }
 
+    public Patient() {
+    }
+    
+    public Patient(User user) {
+        super(user.getId(), user.getEmail(), user.getPassword(), user.getType());
+    }
+    
+    public User getUser() {
+        return new User(this.getId(), this.getEmail(), this.getPassword(), this.getType());
+    }
 }

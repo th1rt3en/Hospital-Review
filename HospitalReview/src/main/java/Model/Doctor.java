@@ -10,41 +10,15 @@ package Model;
  * @author hai06
  */
 public class Doctor {
-    private int id = -1;
+    private int id;
     private String firstName;
     private String lastName;
     private String gender;
     private String degree;
-    private Boolean acceptedInsurance = false;
+    private boolean acceptedInsurance;
     private String officeHours;
     private String languages;
-    private int hospitalId = -1;
-    
-    public Doctor() {
-    }
-
-    public Doctor(int id, String firstName, String lastName, String gender, String degree, boolean acceptedInsurance, String officeHours, String language, int hospitalId) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.degree = degree;
-        this.acceptedInsurance = acceptedInsurance;
-        this.officeHours = officeHours;
-        this.languages = language;
-        this.hospitalId = hospitalId;
-    }
-
-    public Doctor(String firstName, String lastName, String gender, String degree, boolean acceptedInsurance, String officeHours, String language, int hospitalId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.degree = degree;
-        this.acceptedInsurance = acceptedInsurance;
-        this.officeHours = officeHours;
-        this.languages = language;
-        this.hospitalId = hospitalId;
-    }
+    private int hospitalId;
 
     public int getId() {
         return id;
@@ -86,7 +60,7 @@ public class Doctor {
         this.degree = degree;
     }
 
-    public Boolean isAcceptedInsurance() {
+    public boolean isAcceptedInsurance() {
         return acceptedInsurance;
     }
 
@@ -101,7 +75,7 @@ public class Doctor {
     public void setOfficeHours(String officeHours) {
         this.officeHours = officeHours;
     }
-    
+
     public String getLanguages() {
         return languages;
     }
@@ -117,6 +91,12 @@ public class Doctor {
     public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
     }
+
+    public Doctor() {
+    }
     
-    
+    @Override
+    public String toString() {
+        return String.join(",", firstName, lastName, gender, degree, String.valueOf(acceptedInsurance), officeHours, languages, String.valueOf(hospitalId));
+    }
 }
